@@ -9,7 +9,7 @@ function readFile(file){
 
 //pulls out only words from the texts
 function formatData(data){
-   return data.toString().match(/\b\w+'?s?[^\\n\s]?\b/gi);
+   return data.toString().match(/\b\w+'?s?[^\\n\s*]?\b/gi);
 }
 
 function findHaiku(structure) {

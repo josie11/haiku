@@ -13,7 +13,7 @@ function returnHaiku(source) {
       structure = haikuStructure();
       results = haikuFinder.findHaiku(structure);
     };
-    return results[Math.floor(Math.random() * results.length)];
+    return formatResults(structure, results[Math.floor(Math.random() * results.length)]);
   }
 }
 
@@ -28,6 +28,12 @@ function haikuStructure() {
     }
     return arr;
   })
+}
+
+function formatResults(struct, haiku) {
+  let part1 = haiku.splice(0, struct[0].length).join(' ');
+  let part2 = haiku.splice(0, struct[1].length).join(' ');
+  return [part1, part2, haiku.join(' ')].join('\n');
 }
 
 console.log(returnHaiku());
