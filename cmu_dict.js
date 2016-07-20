@@ -10,7 +10,7 @@ function formatData(data){
    var lines = data.toString().split("\n"), library = {};
    for(let line of lines) {
     let lineSplit = line.split(/(?:\(\d\))*  /);
-    let PhenomeCount = lineSplit[1].match(/\w+/g).length;
+    let PhenomeCount = (lineSplit[1].match(/\w{3}/g) || []).length;
     if (library.hasOwnProperty(PhenomeCount)) {
       library[PhenomeCount].push(lineSplit[0]);
     } else {
@@ -25,6 +25,7 @@ function getWord(n) {
   return wordArr[Math.floor(Math.random() * wordArr.length)];
 }
 
+//could use 2 nested map functions too
 function createHaiku(structure) {
   let haiku = [];
   for(let arr of structure) {
